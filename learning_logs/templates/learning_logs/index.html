@@ -4,11 +4,15 @@
     <div class="jumbotron">
         <h1 class="display-3">Track your learning.</h1>
 
-        <p class="lead">Make your own Learning Log, and keep a list of the
-            topics you're learning about. Whenever you learn something new
-            about a topic, make an entry summarizing what you've learned.</p>
-        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
-           role="button">Register &raquo;</a>
+        <p class="lead">Создайте свой собственный журнал обучения и ведите список тем,
+            которые вы изучаете. Всякий раз, когда вы узнаете что-то новое по теме,
+            сделайте запись, обобщающую то, что вы узнали.</p>
+        {% if user.is_authenticated %}
+            <p class="navbar-brand">Добро пожаловть, {{ user.username }}!</p>
+        {% else %}
+            <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+                   role="button">Регистрация &raquo;</a>
+        {% endif %}
     </div>
 {% endblock page_header %}
 
