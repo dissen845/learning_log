@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<p>Add a new topic:</p>
+<p>Добавить новую тему:</p>
 <form action="{% url 'learning_logs:new_topic' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button name="submit">add topic</button>
+    <button name="submit">Добавить тему</button>
 </form>
 
 {% endblock content %}

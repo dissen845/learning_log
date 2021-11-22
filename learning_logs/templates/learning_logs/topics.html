@@ -2,16 +2,17 @@
 
 {% block content %}
 
-    <p>Topics</p>
-
+    <p>Темы</p>
+    <a href="{% url 'learning_logs:new_topic' %}">Добавить новую тему:</a>
     <ul>
         {% for topic in topics %}
+
           <li><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></li>
         {% empty %}
           <li>No topics have been added yet.</li>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'learning_logs:new_topic' %}">Add new topic:</a>
+
 
 {% endblock content %}
