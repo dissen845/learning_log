@@ -31,7 +31,7 @@ def new_topic(request):
     """Определяет новую темы."""
     if request.method != 'POST':
         #Данные не отправлялись. Создается пустая форма
-        form = TopicForm
+        form = TopicForm()
     else:
         #Отправлены данные POST. Обработать данные
         form = TopicForm(data=request.POST)
