@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from .models import Topic, Entry
@@ -18,7 +18,7 @@ def topics(request):
 @login_required
 def topic(request, topic_id):
     """Выводит одну тему и все её записи"""
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     #Проверка того, что тема принадлежит текущему пользователю
     _check_topic_owner(topic, request)
 
@@ -88,4 +88,4 @@ def edit_entry(request, entry_id):
 def _check_topic_owner(topic, request):
     """Проверяет связан ли текущий пользователь с данной темой"""
     if topic.owner != request.user:
-        raise Http404
+        raise Http404()
