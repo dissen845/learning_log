@@ -8,6 +8,10 @@ def index(request):
     """Домашняя страница приложения Learning_log"""
     return render(request, 'learning_logs/index.html')
 
+def about(request):
+    """Страница 'о нас' находящаяся на навигационной панели"""
+    return render(request, 'learning_logs/about.html')
+
 @login_required
 def topics(request):
     """Выводит список тем"""
@@ -48,7 +52,7 @@ def new_topic(request):
 @login_required
 def new_entry(request, topic_id):
     """Добавляет новую запись по конкретной теме"""
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     _check_topic_owner(topic, request)
     if request.method != 'POST':
         #Данные не отправлялись. Создается пустая форма
@@ -68,7 +72,7 @@ def new_entry(request, topic_id):
 @login_required
 def edit_entry(request, entry_id):
     """Редактирует существующую запись"""
-    entry = Entry.objects.get(id=entry_id)
+    entry = get_object_or_404(Entry, id=entry_id)
     topic = entry.topic
     _check_topic_owner(topic, request)
 

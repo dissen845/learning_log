@@ -24,9 +24,16 @@
           <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
+
             <li class="nav-item">
               <a class="nav-link" href="{% url 'learning_logs:topics' %}">
-                  Темы</a></li>
+                  Темы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'learning_logs:about' %}">
+                  О нас</a>
+            </li>
+
           </ul>
           <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
